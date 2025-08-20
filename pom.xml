@@ -31,27 +31,35 @@
                 <spring-ai.version>1.0.1</spring-ai.version>
         </properties>
         <dependencies>
+                <!--通用 spring 基础设施-->
                 <dependency>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-starter-web</artifactId>
                 </dependency>
+
+                <!--rag/agent：大模型-->
+                <dependency>
+                        <groupId>org.springframework.ai</groupId>
+                        <artifactId>spring-ai-starter-model-ollama</artifactId>
+                </dependency>
+
+                <!--rag：PG&矢量数据库-->
                 <dependency>
                         <groupId>org.springframework.ai</groupId>
                         <artifactId>spring-ai-advisors-vector-store</artifactId>
                 </dependency>
                 <dependency>
                         <groupId>org.springframework.ai</groupId>
-                        <artifactId>spring-ai-starter-model-ollama</artifactId>
-                </dependency>
-                <dependency>
-                        <groupId>org.springframework.ai</groupId>
                         <artifactId>spring-ai-starter-vector-store-pgvector</artifactId>
                 </dependency>
+
+                <!--通用 docker-compose 相关-->
                 <dependency>
                         <groupId>org.springframework.ai</groupId>
                         <artifactId>spring-ai-tika-document-reader</artifactId>
                 </dependency>
 
+                <!--通用 docker-compose 相关-->
                 <dependency>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-docker-compose</artifactId>
@@ -64,10 +72,31 @@
                         <scope>runtime</scope>
                         <optional>true</optional>
                 </dependency>
+
+                <!--通用 spring-test-->
                 <dependency>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-starter-test</artifactId>
                         <scope>test</scope>
+                </dependency>
+
+                <!-- agent：工具调用的自动配置（让 @Tool、.tools(...) 等工作更顺畅） -->
+                <dependency>
+                        <groupId>org.springframework.ai</groupId>
+                        <artifactId>spring-ai-autoconfigure-model-tool</artifactId>
+                </dependency>
+
+                <!-- agent：内存对话记忆的 Starter（不需要手写 InMemoryChatMemory） -->
+                <dependency>
+                        <groupId>org.springframework.ai</groupId>
+                        <artifactId>spring-ai-starter-model-chat-memory</artifactId>
+                </dependency>
+
+                <!--agent：数学库，用于测试-->
+                <dependency>
+                        <groupId>net.objecthunter</groupId>
+                        <artifactId>exp4j</artifactId>
+                        <version>0.4.8</version>
                 </dependency>
         </dependencies>
         <dependencyManagement>
