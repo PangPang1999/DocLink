@@ -1,4 +1,4 @@
-package com.pang.rag_demo;
+package com.pang.rag_demo.rag;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
