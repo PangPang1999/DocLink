@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: rag-demo
+
+  ai:
+    ollama:
+      # Ollama 服务的通用配置
+      base-url: http://localhost:11434  # 确保你的 Ollama 服务运行在这个地址和端口
+      chat:
+        # 聊天模型配置
+        options:
+          model: qwen3:8b           # 使用的聊天模型，需要确保你已经拉取了该模型
+      embedding:
+        # 嵌入模型配置
+        options:
+          model: nomic-embed-text:v1.5  # 使用的嵌入模型，需要确保你已经拉取了该模型
+
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+        # 数据库连接信息
+        uri: jdbc:postgresql://localhost:5432/rag_db # PostgreSQL 数据库 URI
+        username: user                     # 你的 PostgreSQL 用户名
+        password: password                     # 你的 PostgreSQL 密码
+        # 表名和列名，根据你的数据库设计调整
+        table-name: rag_documents
+        content-column-name: content
+        id-column-name: id
+        embedding-column-name: embedding
+        metadata-column-name: metadata
+
+  # PostgreSQL 数据库连接池配置
+  datasource:
+    url: jdbc:postgresql://localhost:5432/rag_db # 与 vectorstore 中保持一致
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+    # JPA (可选，但推荐用于数据库管理)
+    jpa:
+      hibernate:
+        ddl-auto: update # 启动时自动更新数据库模式
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
