@@ -1,4 +1,4 @@
-# RAG-Agent (Spring AI Minimal Implementation)
+# DocLink (文档直连)
 
 > **技术栈**：Java 17+ · Spring Boot · Spring AI · PostgreSQL + PGvector · Ollama
 > **说明**：这是一个 **最小实现 (Minimal Implementation)** 的 **RAG + Agent** 系统，用于演示如何在本地环境中实现基于文档检索的智能问答与工具调用。
